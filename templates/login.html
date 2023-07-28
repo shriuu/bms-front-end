@@ -35,13 +35,13 @@
       width: 100%;
       padding: 5px;
       border-radius: 3px;
-      border: 1px solid #e66b6b;
+      border: 1px solid #023394;
     }
 
     .form-group button {
       width: 100%;
       padding: 10px;
-      background-color: #990505;
+      background-color: #053e99;
       color: #fff;
       border: none;
       border-radius: 3px;
@@ -49,7 +49,7 @@
     }
 
     .form-group button:hover {
-      background-color: #b10505;
+      background-color: #053bb1;
     }
 
     nav {
@@ -75,7 +75,11 @@
     
   </style>
 </head>
+<<<<<<< HEAD
+<body style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJRjsvfuga92WWSwvIGd2NrrHf4P_ZB_r7Cg&usqp=CAU');"></body>
+=======
 <body style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSEZOKRzR9Gn1Ymyhtej9-35gVICtkw79QhQ&usqp=CAU');"></body>
+>>>>>>> 74ff37ba265f6a8aca4e723bd42fa968d041718b
 
 <body>
   <nav>
@@ -84,10 +88,14 @@
         <li><a href="/about">About</a></li>
         <li><a href="/signup">Sign-Up</a></li>
         <li><a href="/login">Login</a></li>
+<<<<<<< HEAD
+          </ul>
+=======
         <!-- <li><a href="/application">Application</a></li>
         <li><a href="/donors">Donor page</a></li>
         <li><a href="/announcements">Requirement page</a></li> -->
     </ul>
+>>>>>>> 74ff37ba265f6a8aca4e723bd42fa968d041718b
 </nav> <br/> <br/>
 
     <div class="container">
@@ -116,3 +124,9 @@
 
 
 
+//  query={'PhoneNumber':PhoneNumber}
+for i in donarcollection.find(query):
+    return('already registered')
+donarcollection.insert_one(data) 
+return('registered')
+//

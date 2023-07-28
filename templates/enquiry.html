@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ENQUIRY</title>
+  <link value="stylesheet" href="style/signup.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .container {
+      width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 3px solid #ccc;
+      border-radius: 5px;
+      background-color: #f2f2f2;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 5px;
+      border-radius: 3px;
+      border: 1px solid #e66b6b;
+    }
+
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+      background-color: #990505;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .form-group button:hover {
+      background-color: #b10505;
+    }
+    nav {
+            background-color: #f10606;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+  </style>
+</head>
+<body style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSEZOKRzR9Gn1Ymyhtej9-35gVICtkw79QhQ&usqp=CAU');"></body>
+
+<body>
+  <nav>
+    <ul>
+        <li><a href="/dashboard">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</nav> <br/>
+<div class="container">
+  <h2>Train between Stations</h2>
+  <form action="/trainbtw" method="post">
+    <div class="form-group">
+      <label for="To">To :</label>
+      <input type="text" id="To" name="To" required>
+    </div>
+    <div class="form-group">
+      <label for="From">From :</label>
+      <input type="text" id="From" name="From" required>
+    </div>
+    <div class="form-group">
+  <button type="Search">Search</button>
+</div>
+<span style="color:red">{{err}}</span>
+<span style="color:green">{{res}}</span>
+    </form>
+    </div>
+</div>
+      <span style="color:red">{{err}}</span>
+      <span style="color:green">{{res}}</span>
+      </form>
+      </div>
+      </body>
+      </html>
+      
+
+
+

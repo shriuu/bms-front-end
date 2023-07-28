@@ -21,10 +21,9 @@ def signupform():
     email=request.form['email']
     phone=request.form['phone']
     gender=request.form['gender']
-    bloodtype=request.form['bloodtype']
     password=request.form['password']
-    print(name,email,phone,gender,bloodtype,password)
-    apirequest=backendserver+'/register?Name='+name+'&Email='+email+'&Phone='+phone+'&Gender='+gender+'&Bloodtype='+bloodtype+'&Password='+password
+    print(name,email,phone,gender,password)
+    apirequest=backendserver+'/register?Name='+name+'&Email='+email+'&Phone='+phone+'&Gender='+gender+'&Password='+password
     http=urllib3.PoolManager()
     response=http.request('get',apirequest)
     response=response.data.decode('utf-8')
@@ -49,83 +48,58 @@ def loginform():
     print(response)
     if(response=='True'):
         session['username']=userid
-        return redirect('/dashboard')
+        return redirect('/enquiry')
         # return render_template('login.html',res='Login Valid')
     else:
         return render_template('login.html',err='Login Invalid')
 
-@frontend.route('/dashboard')
-def dashboardPage():
-    return render_template('application.html')
+@frontend.route('/enquiry',methods=['post'])
+def enquiry():
+    To=request.form['To']
+    From=request.form['From']
+    print(To,From)
+    apirequest=backendserver+'/enquiry?To='+To+'&From='+From
+    http=urllib3.PoolManager()
+    response=http.request('get',apirequest)
+    response=response.data.decode('utf-8')
+    print(response)
+    return render_template('available.html')
+
+
+@frontend.route('/trainbtw',methods=['get'])
+def trainbtw():
+    To=request.form['To']
+    From=request.form['From']
+    print(To,From)
+    apirequest=backendserver+'/login?To='+To+'&From='+From
+    http=urllib3.PoolManager()
+    response=http.request('get',apirequest)
+    response=response.data.decode('utf-8')
+    print(response)
+    return redirect ('/available')
+
+
+@frontend.route('/available')
+def available():
+    apirequest=backendserver+'/availablet'
+    http=urllib3.PoolManager()
+    response=http.request('post',apirequest)
+    response=response.data.decode('utf-8')
+    print(response)
+    return render_template('available.html',dashboard_data=response,l=len(response))
+
+@frontend.route('/enquiry')
+def enquirypage():
+    return render_template('enquiry.html')
 
 @frontend.route('/logout')
 def logoutpage():
     session['username']=None
     return redirect('/')
 
-@frontend.route('/applicationform',methods=['post'])
-def applicationform():
-    name=request.form['name']
-    email=request.form['email']
-    phone=request.form['phone']
-    age=request.form['age']
-    bloodtype=request.form['bloodtype']
-    donationFrequency=request.form['donationFrequency']
-    date=request.form['date']
-    additionalcomments=request.form['additionalcomments']
-    print(name,email,phone,age,bloodtype,donationFrequency,date,additionalcomments)
-    apirequest=backendserver+'/applicationform?FullName='+name+'&Email='+email+'&PhoneNumber='+phone+'&Age='+age+'&BloodType='+bloodtype+'&DonationFrequency='+donationFrequency+'&LastDonationDate='+date+'&AdditionalComments='+additionalcomments
-    http=urllib3.PoolManager()
-    response=http.request('get',apirequest)
-    response=response.data.decode('utf-8')
-    print(response)
-    if response=="already registered":
-        return render_template('application.html',err="You are already registered")
-    else:
-        return render_template('application.html',res='Registered Successfully')
-
-@frontend.route('/donors')
-def donors():
-    apirequest=backendserver+'/getdonors'
-    http=urllib3.PoolManager()
-    response=http.request('get',apirequest)
-    response=response.data.decode('utf-8')
-    response=json.loads(response)
-    print(response)
-    return render_template('donor.html',dashboard_data=response,l=len(response))
-
-@frontend.route('/announcements')
-def announcements():
-    return render_template('announcements.html')
-
-@frontend.route('/announcementsform',methods=['post'])
-def announcementsform():
-    name=request.form['name']
-    email=request.form['email']
-    bloodtype=request.form['bloodtype']
-    quantity=request.form['quantity']
-    urgency=request.form['urgency']
-    date=request.form['date']
-    message=request.form['message']
-    print(name,email,bloodtype,quantity,urgency,date,message)
-    apirequest=backendserver+'/requirementpage?Name='+name+'&Email='+email+'&BloodType='+bloodtype+'&Quantity='+quantity+'&Urgency='+urgency+'&RequirementDate='+date+'&AdditionalInformation='+message
-    http=urllib3.PoolManager()
-    response=http.request('get',apirequest)
-    response=response.data.decode('utf-8')
-    if response=='already stored':
-        return render_template('announcements.html',err='announcement already added')
-    else:
-        return render_template('announcements.html',res='announcement added')
-
-@frontend.route('/requests')
-def requests():
-    apirequest=backendserver+'/getrequests'
-    http=urllib3.PoolManager()
-    response=http.request('get',apirequest)
-    response=response.data.decode('utf-8')
-    response=json.loads(response)
-    print(response)
-    return render_template('requests.html',dashboard_data=response,l=len(response))
+@frontend.route('/about')
+def about():
+    return render_template('about.html')
 
 @frontend.route('/about')
 def about():

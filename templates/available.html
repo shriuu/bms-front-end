@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DONOR PAGE</title>
+  <title>TRAINS AVAILABLE</title>
   <link value="stylesheet" href="sytle/donor page.css">
   <style>
     table {
@@ -43,14 +43,21 @@
   </style>
 </head>
 <body>
+<<<<<<< HEAD:front-end/templates/available.html
+  <body style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJRjsvfuga92WWSwvIGd2NrrHf4P_ZB_r7Cg&usqp=CAU');"></body>
+=======
   <body style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSEZOKRzR9Gn1Ymyhtej9-35gVICtkw79QhQ&usqp=CAU');"></body>
+>>>>>>> 74ff37ba265f6a8aca4e723bd42fa968d041718b:front-end/templates/requests.html
 
   <nav>
     <ul>
         <li><a href="/dashboard">Home</a></li>
+<<<<<<< HEAD:front-end/templates/available.html
+=======
         <li><a href="/donors">Donors</a></li>
         <li><a href="/announcements">Announcements</a></li> 
         <li><a href="/requests">Requests</a></li>
+>>>>>>> 74ff37ba265f6a8aca4e723bd42fa968d041718b:front-end/templates/requests.html
         <li><a href="/about">About</a></li>
         <li><a href="/logout">Logout</a></li>
     </ul>
@@ -58,13 +65,11 @@
   <h1 style="color: rgb(235, 24, 24)"><u>Request Details:</u></h1>
   <table>
     <tr><B>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Blood Type</th>
-      <th>Quantity</th>
-      <th>Urgency</th>
-      <th>Requirement Date</th>
-      <th>Additional Information</th>
+      <th>SNO</th>
+      <th>TO</th>
+      <th>FROM</th>
+      <th>DAY</th>
+      <th>TIME</th>
       </B>
     </tr>
     {%for i in range(l)%}
@@ -74,8 +79,6 @@
         <td>{{dashboard_data[i][2]}}</td>
         <td>{{dashboard_data[i][3]}}</td>
         <td>{{dashboard_data[i][4]}}</td>
-        <td>{{dashboard_data[i][5]}}</td>
-        <td>{{dashboard_data[i][6]}}</td>
 
       </tr>
     {%endfor%}
